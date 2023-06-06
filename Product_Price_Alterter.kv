@@ -1,0 +1,114 @@
+<MyLayout>
+    canvas.before:
+        Color:
+            rgba: (1, 1, 1, 1)
+        Rectangle:
+            source:'new_back.png'
+            size: root.width, root.height
+            pos: self.pos
+
+    BoxLayout:
+	    orientation: "horizontal"
+        size: root.width, root.height
+
+        Label:
+            pos_hint: {"top":1.4}
+            markup:True
+            text: "Product Price [b]Drop Indicator[/b]"
+            font_size:32
+
+	    BoxLayout:
+	        padding: 75
+	        spacing: 20
+		    orientation: "vertical"
+		    size: root.width, root.height
+
+		    GridLayout:
+		        spacing: 20
+			    cols:2
+
+			    Label:
+                    size_hint: 0.5, 0.5
+                    text: "Provide Product Details (Amazon/Flipkart):"
+                    font_size:20
+                Label:
+
+		        Label:
+		            font_size:20
+                    text:"Product Link:"
+		        TextInput:
+		            id: link
+		            hint_text:'Paste Product Link here'
+                    size_hint: 0.5, 0.5
+
+                Label:
+		            font_size:20
+                    text:"Set Price Range:"
+		        TextInput:
+		            id: set_price
+		            hint_text:'Set Price Range here'
+                    size_hint: 0.5, 0.5
+
+                Label:
+		            font_size:20
+                    text:"Email ID"
+		        TextInput:
+		            id: email
+		            hint_text:'Enter your email id here in order to receive price drop notification'
+                    size_hint: 0.5, 0.5
+
+                RoundedButton:
+                    id: disable_add_product_button
+                    disabled: False
+                    text: "[b]Add Product[/b]"
+                    on_press: root.add_product()
+
+                RoundedButton:
+                    id: disable_remove_product_button
+                    disabled: True
+                    text: '[b]Remove Product[/b]'
+                    on_press: root.remove_product()
+
+                RoundedButton:
+                    id: disable_start_track_button
+                    disabled: True
+                    text: "[b]Start Tracking[/b]"
+                    on_press: root.start_track()
+
+                RoundedButton:
+                    id: disable_stop_track_button
+                    disabled: True
+                    text: '[b]Stop Tracking[/b]'
+                    on_press: root.stop_track()
+
+            TextInput:
+                padding: 20
+
+                size_hint_y: None
+                height: 150
+                background_color: (0,0,0,0)
+                foreground_color: (1, 1, 1, 1)
+                id: output_label
+                text: ""
+                font_size:20
+
+<RoundedButton@Button>
+    id: button_prop
+    markup: True
+    pos_hint: {'center_x': 0.5}
+	background_color: (0,0,0,0)
+	background_normal: ''
+	canvas.before:
+		Color:
+			rgba: (0,206,209, 0.1) if self.state == 'normal' else (0,1,0,0.2)
+		RoundedRectangle:
+			size: self.size
+			pos: self.pos
+			radius: [35]
+
+
+
+
+
+
+
